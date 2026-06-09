@@ -1,0 +1,385 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Protocol June 10: Happy Birthday Bro!</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts for Marvel (Anton) and SRK/Elegant (Great Vibes) vibes -->
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Great+Vibes&family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
+    
+    <!-- Three.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    
+    <!-- GSAP for smooth animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #050505;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        #canvas-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 1;
+        }
+
+        .marvel-text {
+            font-family: 'Anton', sans-serif;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+
+        .srk-text {
+            font-family: 'Great Vibes', cursive;
+        }
+
+        .glass-panel {
+            background: rgba(15, 15, 20, 0.6);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            box-shadow: 0 0 30px rgba(226, 54, 54, 0.3);
+        }
+
+        .marvel-gradient {
+            background: linear-gradient(to right, #e23636, #f78f3f);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Glitch Effect for the button */
+        .glitch-btn {
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        .glitch-btn:hover {
+            box-shadow: 0 0 20px #e23636, 0 0 40px #f78f3f;
+            transform: scale(1.05);
+        }
+
+        #main-content {
+            opacity: 0;
+            transform: translateY(30px);
+            pointer-events: none;
+        }
+        
+        #main-content.visible {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: all;
+            transition: opacity 1.5s ease, transform 1.5s ease;
+        }
+
+        #init-screen {
+            transition: opacity 1s ease;
+        }
+    </style>
+</head>
+<body class="text-white antialiased selection:bg-red-500 selection:text-white">
+
+    <!-- Three.js Canvas -->
+    <div id="canvas-container"></div>
+
+    <!-- UI Overlay Layer -->
+    <div class="relative z-10 w-full h-full flex flex-col items-center justify-center min-h-screen p-4">
+        
+        <!-- Initialization Screen -->
+        <div id="init-screen" class="absolute inset-0 flex flex-col items-center justify-center z-20 bg-black/40 backdrop-blur-sm">
+            <h2 class="text-sm md:text-base tracking-[0.3em] text-red-500 mb-6 font-semibold animate-pulse">J.A.R.V.I.S. SYSTEM ONLINE</h2>
+            <button id="start-btn" class="glitch-btn border-2 border-red-500 text-red-500 px-8 py-4 font-bold tracking-widest rounded-sm hover:bg-red-500 hover:text-white uppercase transition-colors">
+                Initiate June 10 Protocol
+            </button>
+        </div>
+
+        <!-- Main Birthday Content (Hidden initially) -->
+        <div id="main-content" class="glass-panel max-w-3xl w-full p-8 md:p-12 rounded-2xl text-center relative overflow-hidden">
+            
+            <!-- Techy corner accents -->
+            <div class="absolute top-0 left-0 w-8 h-8 border-t-2 border-l-2 border-yellow-500 opacity-50 m-4"></div>
+            <div class="absolute top-0 right-0 w-8 h-8 border-t-2 border-r-2 border-yellow-500 opacity-50 m-4"></div>
+            <div class="absolute bottom-0 left-0 w-8 h-8 border-b-2 border-l-2 border-yellow-500 opacity-50 m-4"></div>
+            <div class="absolute bottom-0 right-0 w-8 h-8 border-b-2 border-r-2 border-yellow-500 opacity-50 m-4"></div>
+
+            <p class="text-yellow-500 tracking-[0.2em] text-sm md:text-base font-semibold mb-2">TARGET ACQUIRED: BEST FRIEND</p>
+            
+            <h1 class="marvel-text text-5xl md:text-7xl lg:text-8xl mb-6 marvel-gradient filter drop-shadow-lg">
+                Happy Birthday<br>Nethusha!
+            </h1>
+
+            <div class="space-y-6 text-gray-300 text-base md:text-lg lg:text-xl leading-relaxed">
+                <p class="font-light">
+                    "Bade bade deshon mein aisi choti choti baatein hoti rehti hain..."<br>
+                    <span class="text-white font-medium">But your birthday on <span class="text-yellow-400 font-bold">June 10th</span> is a BIG deal!</span>
+                </p>
+                
+                <div class="w-24 h-px bg-gradient-to-r from-transparent via-red-500 to-transparent mx-auto my-6"></div>
+                
+                <p class="srk-text text-3xl md:text-4xl text-yellow-300 font-normal drop-shadow-md py-2">
+                    "Don ko pakadna mushkil hi nahi, namumkin hai."
+                </p>
+                
+                <p class="font-light">
+                    Just like finding a brother and a best friend as epic as you. You're the Iron Man to my Avengers, the Pathaan of our squad, and an absolute legend.
+                </p>
+                
+                <p class="marvel-text text-xl md:text-2xl text-red-500 mt-8 tracking-wider">
+                    Avengers, Assemble... for the cake! 🍰<br>
+                    <span class="text-sm md:text-base text-yellow-500 mt-6 block tracking-widest font-sans uppercase">- Epic Wishes From Chirana -</span>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Application Logic -->
+    <script>
+        // --- Three.js Setup ---
+        const container = document.getElementById('canvas-container');
+        const scene = new THREE.Scene();
+        // Add a subtle fog for depth
+        scene.fog = new THREE.FogExp2(0x050505, 0.002);
+
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 2000);
+        camera.position.z = 400;
+
+        const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.setPixelRatio(window.devicePixelRatio);
+        container.appendChild(renderer.domElement);
+
+        // --- Create Marvel/Tech Multiverse Particles ---
+        const particleCount = 7000;
+        const geometry = new THREE.BufferGeometry();
+        const positions = new Float32Array(particleCount * 3);
+        const originalPositions = new Float32Array(particleCount * 3);
+        const heartPositions = new Float32Array(particleCount * 3);
+        const colors = new Float32Array(particleCount * 3);
+
+        const color1 = new THREE.Color('#e23636'); // Marvel Red
+        const color2 = new THREE.Color('#f78f3f'); // Iron Man Gold
+        const color3 = new THREE.Color('#ffffff'); // Starlight
+
+        for (let i = 0; i < particleCount * 3; i += 3) {
+            // Distribute in a large sphere
+            const r = 800 * Math.cbrt(Math.random());
+            const theta = Math.random() * 2 * Math.PI;
+            const phi = Math.acos(2 * Math.random() - 1);
+
+            const x = r * Math.sin(phi) * Math.cos(theta);
+            const y = r * Math.sin(phi) * Math.sin(theta);
+            const z = r * Math.cos(phi);
+
+            positions[i] = x;
+            positions[i + 1] = y;
+            positions[i + 2] = z;
+
+            originalPositions[i] = x;
+            originalPositions[i + 1] = y;
+            originalPositions[i + 2] = z;
+
+            // 3D Heart Shape Math for morphing effect
+            const t = Math.PI * 2 * Math.random();
+            const heartX = 16 * Math.pow(Math.sin(t), 3);
+            const heartY = 13 * Math.cos(t) - 5 * Math.cos(2*t) - 2 * Math.cos(3*t) - Math.cos(4*t);
+            const heartZ = (Math.random() - 0.5) * 5;
+            
+            // Scale and randomly cluster around the heart outline
+            const scale = 15;
+            heartPositions[i] = heartX * scale + (Math.random() - 0.5) * 15;
+            heartPositions[i + 1] = heartY * scale + (Math.random() - 0.5) * 15;
+            heartPositions[i + 2] = heartZ * scale + (Math.random() - 0.5) * 15;
+
+            // Randomize colors
+            const mix = Math.random();
+            let selectedColor = mix > 0.6 ? color1 : (mix > 0.3 ? color2 : color3);
+            
+            colors[i] = selectedColor.r;
+            colors[i + 1] = selectedColor.g;
+            colors[i + 2] = selectedColor.b;
+        }
+
+        geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+        geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+
+        // Custom shader material for glowing dots
+        const particleMaterial = new THREE.PointsMaterial({
+            size: 2.5,
+            vertexColors: true,
+            blending: THREE.AdditiveBlending,
+            transparent: true,
+            opacity: 0.8,
+            sizeAttenuation: true
+        });
+
+        const particles = new THREE.Points(geometry, particleMaterial);
+        scene.add(particles);
+
+        // --- Create a Central "Arc Reactor" / Tech Sphere ---
+        const coreGeometry = new THREE.IcosahedronGeometry(40, 2);
+        const coreMaterial = new THREE.MeshBasicMaterial({
+            color: 0xe23636,
+            wireframe: true,
+            transparent: true,
+            opacity: 0.3
+        });
+        const core = new THREE.Mesh(coreGeometry, coreMaterial);
+        scene.add(core);
+
+        const outerCoreGeo = new THREE.IcosahedronGeometry(50, 1);
+        const outerCoreMat = new THREE.MeshBasicMaterial({
+            color: 0xf78f3f,
+            wireframe: true,
+            transparent: true,
+            opacity: 0.1
+        });
+        const outerCore = new THREE.Mesh(outerCoreGeo, outerCoreMat);
+        scene.add(outerCore);
+
+        // Add Light to the core
+        const pointLight = new THREE.PointLight(0xe23636, 2, 300);
+        scene.add(pointLight);
+
+        // --- Holographic Sci-Fi Grid Floor ---
+        const gridHelper = new THREE.GridHelper(2000, 50, 0xe23636, 0x444444);
+        gridHelper.position.y = -200;
+        gridHelper.material.opacity = 0.2;
+        gridHelper.material.transparent = true;
+        scene.add(gridHelper);
+
+        // --- Interactivity / Animation State ---
+        let mouseX = 0;
+        let mouseY = 0;
+        let isWarping = false;
+        let targetSpeed = 0.001;
+        let currentSpeed = 0.001;
+        let time = 0;
+
+        // Mouse tracking for parallax
+        document.addEventListener('mousemove', (event) => {
+            mouseX = (event.clientX - window.innerWidth / 2) * 0.1;
+            mouseY = (event.clientY - window.innerHeight / 2) * 0.1;
+        });
+
+        // Touch tracking for mobile parallax
+        document.addEventListener('touchmove', (event) => {
+            if(event.touches.length > 0) {
+                mouseX = (event.touches[0].clientX - window.innerWidth / 2) * 0.1;
+                mouseY = (event.touches[0].clientY - window.innerHeight / 2) * 0.1;
+            }
+        }, { passive: true });
+
+        // Window resize handler
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+
+        // --- Animation Loop ---
+        function animate() {
+            requestAnimationFrame(animate);
+            time += 0.01;
+
+            // Smooth speed transition (Warp effect)
+            currentSpeed += (targetSpeed - currentSpeed) * 0.05;
+
+            // Rotate Particles
+            particles.rotation.y += currentSpeed;
+            particles.rotation.x += currentSpeed * 0.5;
+
+            // Animate Core
+            core.rotation.y -= 0.01;
+            core.rotation.x -= 0.005;
+            outerCore.rotation.y += 0.005;
+            outerCore.rotation.z += 0.01;
+            
+            // Core pulsating effect
+            const scale = 1 + Math.sin(time * 2) * 0.05;
+            core.scale.set(scale, scale, scale);
+            pointLight.intensity = 2 + Math.sin(time * 4) * 1;
+
+            // Animate grid for forward movement illusion
+            gridHelper.position.z = (time * 50) % 40;
+
+            // Camera parallax based on mouse
+            camera.position.x += (mouseX - camera.position.x) * 0.05;
+            camera.position.y += (-mouseY - camera.position.y) * 0.05;
+
+            // Warp drive camera effect
+            if (isWarping) {
+                camera.position.z += (150 - camera.position.z) * 0.05;
+            }
+
+            camera.lookAt(scene.position);
+            renderer.render(scene, camera);
+        }
+
+        // Start animation loop once window loads
+        window.onload = function() {
+            animate();
+            
+            // Interaction Logic
+            const startBtn = document.getElementById('start-btn');
+            const initScreen = document.getElementById('init-screen');
+            const mainContent = document.getElementById('main-content');
+
+            startBtn.addEventListener('click', () => {
+                // Trigger Warp Drive effect
+                isWarping = true;
+                targetSpeed = 0.05; // Speed up rotation dramatically
+                
+                // Hide init screen
+                initScreen.style.opacity = '0';
+                setTimeout(() => {
+                    initScreen.style.display = 'none';
+                }, 1000);
+
+                // Morph particles into a 3D Heart Shape
+                let morphData = { progress: 0 };
+                gsap.to(morphData, {
+                    progress: 1,
+                    duration: 4,
+                    ease: "power3.inOut",
+                    delay: 0.5,
+                    onUpdate: () => {
+                        const pos = geometry.attributes.position.array;
+                        for (let i = 0; i < pos.length; i++) {
+                            pos[i] = originalPositions[i] + (heartPositions[i] - originalPositions[i]) * morphData.progress;
+                        }
+                        geometry.attributes.position.needsUpdate = true;
+                    }
+                });
+
+                // Show main content after a slight delay
+                setTimeout(() => {
+                    mainContent.classList.add('visible');
+                    
+                    // Slow down speed to a nice cruising speed so the heart is visible
+                    gsap.to(window, { targetSpeed: 0.001, duration: 3, delay: 1 });
+                    
+                    // Animate the core colors to Gold
+                    coreMaterial.color.setHex(0xf78f3f);
+                    outerCoreMat.color.setHex(0xe23636);
+                    pointLight.color.setHex(0xf78f3f);
+                    
+                }, 800);
+            });
+        };
+    </script>
+</body>
+</html>
+
+
+```
